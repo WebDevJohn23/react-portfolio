@@ -1,9 +1,10 @@
-function App() {
-    return (
-        <div>
-            <h1>Project Name</h1>
-        </div>
-    )
-}
+import { Header, MainContent } from "./components";
 
-export default App
+export default function App() {
+    return (
+        <>
+            <Header />
+            <MainContent />
+        </>
+    );
+}
