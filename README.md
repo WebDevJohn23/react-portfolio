@@ -1,25 +1,24 @@
-# React Boilerplate - Frontend
+# React Portfolio
 
 **Author:** WebDevJohn23  
 **License:** MIT  
-**Status:** Template Repository
+**Status:** Active Development
 
 ---
 
 ## Overview
 
-Clean React boilerplate with Vite for rapid project setup. Includes minimal configuration, organized file structure, and essential dependencies for modern React development.
+Personal portfolio website showcasing web development projects, technical skills, and professional experience. Built with modern React patterns and responsive design principles.
 
 ---
 
 ## Features
 
-- React 18 with Vite build tool
-- Fast HMR (Hot Module Replacement)
-- Minimal dependencies
-- Clean file structure
-- ESLint configuration
-- Ready for immediate development
+- Responsive design for all devices
+- Project showcase with live demos
+- Interactive UI components
+- Contact information
+- Professional biography
 
 ---
 
@@ -32,55 +31,53 @@ Clean React boilerplate with Vite for rapid project setup. Includes minimal conf
 
 ---
 
-## Usage
+## Installation
 
-**Use this template:**
-
-1. Click "Use this template" button on GitHub
-2. Create new repository from template
-3. Clone your new repository
+1. Clone the repository
 ```bash
-git clone https://github.com/WebDevJohn23/your-new-project.git
-cd your-new-project
+git clone https://github.com/WebDevJohn23/react-portfolio.git
+cd react-portfolio
+```
+
+2. Install dependencies
+```bash
 npm install
+```
+
+---
+
+## Running Locally
+
+**Start development server:**
+```bash
 npm run dev
 ```
+App runs on http://localhost:5173
 
 ---
 
 ## Project Structure
 ```
-react-boilerplate-frontend/
+react-portfolio/
 ├── src/
 │   ├── App.jsx          # Main component
 │   ├── main.jsx         # React entry point
 │   └── index.css        # Global styles
 ├── public/              # Static assets
 ├── index.html           # HTML entry point
-├── vite.config.js       # Vite configuration
 └── package.json         # Dependencies
 ```
 
 ---
 
-## Available Scripts
+## Deployment
+
+**Build for production:**
 ```bash
-npm run dev       # Start development server
-npm run build     # Build for production
-npm run preview   # Preview production build
-npm run lint      # Run ESLint
+npm run build
 ```
 
----
-
-## Customization
-
-After creating a new project from this template:
-
-1. Update `package.json` name field
-2. Update `index.html` title
-3. Modify `README.md` for your project
-4. Start building your application
+Production files will be in the `dist/` folder.
 
 ---
 
@@ -94,4 +91,5 @@ This project is licensed under the **MIT License**.
 
 **Johnathan Julig**  
 Portfolio: [portfolio.johnathanjulig.com](https://portfolio.johnathanjulig.com)  
-GitHub: [@WebDevJohn23](https://github.com/WebDevJohn23)
+GitHub: [@WebDevJohn23](https://github.com/WebDevJohn23)  
+Email: Johnathan.Julig@gmail.com
