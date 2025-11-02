@@ -9,7 +9,7 @@ export default function MainContent() {
         <main>
             <Hero />
             <Stack />
-            <Projects />=
+            <Projects />
         </main>
     );
 }
