@@ -36,7 +36,7 @@ export default function Stack() {
         const ac = new AbortController();
         (async () => {
             try {
-                const data = await getStack({ signal: ac.signal });
+                const data = await getStack({signal: ac.signal});
                 // Sort by stack_order
                 const sorted = Array.isArray(data)
                     ? data.sort((a, b) => getOrder(a) - getOrder(b))
@@ -53,59 +53,69 @@ export default function Stack() {
 
     if (loading) return <div>Loading…</div>;
     if (err) return <div>Failed to load stack.</div>;
+// Group items by category
+    const groupedStack = stack.reduce((acc, item) => {
+        console.log('Stack item:', item);
+        const cat = getCategory(item);
+        if (!acc[cat]) acc[cat] = [];
+        acc[cat].push(item);
+        return acc;
+    }, {});
+
+// Category display names and order
+    const categories = [
+        {key: 'platforms-cms', label: 'Platforms & CMS'},
+        {key: 'wordpress-tools', label: 'WordPress Tools'},
+        {key: 'dev-tools-systems', label: 'Dev Tools & Systems'},
+        {key: 'languages', label: 'Languages'}
+    ];
 
     return (
         <section aria-labelledby="stack-title">
-            <h2 id="stack-title">stack</h2>
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-                    gap: "16px",
-                }}
-            >
-                {stack.map((item) => {
-                    const title = getTitle(item);
-                    const iconValue = getIconValue(item);
-                    const category = getCategory(item);
-                    const url = getUrl(item);
-                    const color = getColor(item);
+            <h2 id="stack-title">Stack</h2>
 
-                    return (
-                        <article
-                            key={item.id ?? item.slug}
-                            style={{ border: "1px solid #eee", padding: 12 }}
-                            data-category={category}
-                        >
-                            {/* Icon placeholder - we'll add icon component later */}
-                            {iconValue && (
-                                <div style={{ color: color }}>
-                                    {/* Icon will go here */}
-                                    <span>{iconValue}</span>
-                                </div>
-                            )}
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                gap: '24px'
+            }}>
+                {categories.map(({key, label}) => (
+                    <div key={key}>
+                        <h3>{label}</h3>
+                        <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
+                            {(groupedStack[key] || []).map((item) => {
+                                const title = getTitle(item);
+                                const iconValue = getIconValue(item);
+                                const url = getUrl(item);
+                                const color = getColor(item);
 
-                            <h3 style={{ marginTop: 0 }}>
-                                {url ? (
-                                    <a href={url} target="_blank" rel="noopener noreferrer">
-                                        {title}
-                                    </a>
-                                ) : (
-                                    title
-                                )}
-                            </h3>
+                                return (
+                                    <article
+                                        key={item.id ?? item.slug}
+                                        style={{border: '1px solid #eee', padding: 12}}
+                                    >
+                                        {iconValue && (
+                                            <svg style={{fill: color, width: 48, height: 48}}>
+                                                <use xlinkHref={`#${iconValue}`}></use>
+                                            </svg>
+                                        )}
 
-                            <small>{category}</small>
-                            {iconValue && (
-                                <svg style={{ fill: color, width: 48, height: 48 }}>
-                                    <use xlinkHref={`#${iconValue}`}></use>
-                                </svg>
-                            )}
-                        </article>
-                    );
-                })}
+                                        <h4 style={{marginTop: 8, marginBottom: 0}}>
+                                            {url ? (
+                                                <a href={url} target="_blank" rel="noopener noreferrer">
+                                                    {title}
+                                                </a>
+                                            ) : (
+                                                title
+                                            )}
+                                        </h4>
+                                    </article>
+                                );
+                            })}
+                        </div>
+                    </div>
+                ))}
             </div>
-
         </section>
     );
 }
