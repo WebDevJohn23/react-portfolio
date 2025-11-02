@@ -7,7 +7,7 @@
 .stack-category-grid {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
-  gap: 24px;
+  gap: 2rem !important;
 }
 
 .stack-category-card {
@@ -26,18 +26,10 @@
     color: white;
   }
 
-  svg {
-    fill: currentColor;
-    width: 45px;
-    height: 45px;
-  }
   span {
     font-size: 1.1rem;
   }
 
-  &:hover {
-    background: #f0f0f0;
-  }
 }
 
 .platforms-cms {

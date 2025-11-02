@@ -77,34 +77,59 @@ export default function Stack() {
             <h2 id="section-title">My <span>Stack</span></h2>
 
             <div className="stack-category-grid">
-                {categories.map(({key, label}) => (
-                    <div key={key}  className={`${key} stack-category-card`}>
+                {categories.map(({ key, label }) => (
+                    <div key={key} className={`${key} stack-category-card`}>
                         <h3>{label}</h3>
                         <div className="stack-card-grid">
                             {(groupedStack[key] || []).map((item) => {
                                 const title = getTitle(item);
-                                const iconValue = getIconValue(item);
+                                const iconValue = getIconValue(item);   // may be a URL or a sprite id
                                 const url = getUrl(item);
+                                const color = getColor(item);
+
+                                const isFileIcon =
+                                    typeof iconValue === 'string' &&
+                                    (
+                                        /^https?:\/\//i.test(iconValue) ||
+                                        iconValue.endsWith('.svg') ||
+                                        iconValue.endsWith('.png') ||
+                                        iconValue.endsWith('.jpg') ||
+                                        iconValue.endsWith('.jpeg') ||
+                                        iconValue.endsWith('.webp')
+                                    );
 
                                 return (
-                                    <article className="stack-card"
-                                        key={item.id ?? item.slug}
-                                    >
+                                    <article className="stack-card" key={item.id ?? item.slug}>
                                         {iconValue && (
-                                            <svg>
-                                                <use xlinkHref={`#${iconValue}`}></use>
-                                            </svg>
+                                            isFileIcon ? (
+                                                <img
+                                                    src={iconValue}
+                                                    className="stack-icons"
+                                                    alt={title}
+                                                    width={45}
+                                                    height={45}
+                                                />
+                                            ) : (
+                                                <svg
+                                                    style={{ fill: color, width: '45px', height: '45px' }}
+                                                    className="stack-icons"
+                                                    aria-label={title}
+                                                    role="img"
+                                                >
+                                                    <use xlinkHref={`#${iconValue}`} />
+                                                </svg>
+                                            )
                                         )}
 
-                                        <span style={{marginTop: 8, marginBottom: 0}}>
-                                            {url ? (
-                                                <a href={url} target="_blank" rel="noopener noreferrer">
-                                                    {title}
-                                                </a>
-                                            ) : (
-                                                title
-                                            )}
-                                        </span>
+                                        <span style={{ marginTop: 8, marginBottom: 0 }}>
+                {url ? (
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                        {title}
+                    </a>
+                ) : (
+                    title
+                )}
+              </span>
                                     </article>
                                 );
                             })}

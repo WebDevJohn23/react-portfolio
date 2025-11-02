@@ -10,6 +10,11 @@
   top: 0;
   z-index: 9999;
   background: #16213e;
+  @extend .padding-20;
+
+  .logo {
+    @extend .padding-20;
+  }
 
   a {
     color: #ffffff;
@@ -25,6 +30,11 @@ ul {
 
 .menu-item {
   color: #ffffff;
+  @extend .padding-20;
+}
+
+.padding-20 {
+  padding:20px;
 }
 
 
@@ -33,6 +43,13 @@ ul {
   .header {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
+    width: 100%;
+
+    .menu-item-list {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+    }
+
   }
 }
 
@@ -41,8 +58,8 @@ ul {
     display: grid !important;
     grid-template-columns: repeat(1, 1fr) !important;
 
-    div{
-      padding-bottom: 0;
+    .menu-item{
+      padding: 5px;
     }
   }
 }
