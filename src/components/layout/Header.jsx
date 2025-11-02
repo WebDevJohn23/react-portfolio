@@ -1,7 +1,7 @@
 import './Header.scss';
 export default function Header() {
     return (
-        <header className='header'>
+        <header className="header">
             <div className="logo padding-20">
                 <a href="#">Johnathan Julig</a>
             </div>
