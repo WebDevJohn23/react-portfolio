@@ -1,4 +1,5 @@
 // src/components/layout/stack.jsx
+import './Stack.scss';
 import { useEffect, useState } from "react";
 import { getStack } from "../../api/getStack.js";
 
@@ -74,28 +75,22 @@ export default function Stack() {
         <section aria-labelledby="stack-title">
             <h2 id="stack-title">Stack</h2>
 
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '24px'
-            }}>
+            <div className="stack-category-grid">
                 {categories.map(({key, label}) => (
-                    <div key={key}>
+                    <div key={key}  className={`${key} stack-category-card`}>
                         <h3>{label}</h3>
-                        <div style={{display: 'flex', flexDirection: 'column', gap: '12px'}}>
+                        <div className="stack-card-grid">
                             {(groupedStack[key] || []).map((item) => {
                                 const title = getTitle(item);
                                 const iconValue = getIconValue(item);
                                 const url = getUrl(item);
-                                const color = getColor(item);
 
                                 return (
-                                    <article
+                                    <article className="stack-card"
                                         key={item.id ?? item.slug}
-                                        style={{border: '1px solid #eee', padding: 12}}
                                     >
                                         {iconValue && (
-                                            <svg style={{fill: color, width: 48, height: 48}}>
+                                            <svg>
                                                 <use xlinkHref={`#${iconValue}`}></use>
                                             </svg>
                                         )}

@@ -1,7 +1,8 @@
 // src/components/layout/Projects.jsx
+import './Projects.scss';
 import { useEffect, useState } from "react";
 import { getProjects } from "../../api/getProjects";
-import projectsData from "../../api/projects.json";
+//import projectsData from "../../api/projects.json";
 
 // Helpers to safely read across wp/v2 and acf/v3 payloads
 function getTitle(item) {

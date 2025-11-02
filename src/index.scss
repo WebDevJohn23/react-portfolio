@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Mono', sans-serif;
+  padding: 20px;
+  background: #16213e;
+  color: #ffffff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.padding-20 {
+  padding: 20px;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 1rem !important;
+  font-size: 1.3rem;
+  color: #7ca9ff;
+}
