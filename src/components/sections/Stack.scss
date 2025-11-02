@@ -8,7 +8,6 @@
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 24px;
-  padding-top: 50px;
 }
 
 .stack-category-card {
@@ -17,9 +16,11 @@
 }
 
 .stack-card {
+  align-items: center;
   display: flex;
   flex-direction: row;
   gap: 25px;
+  max-width: 350px;
 
   a {
     color: white;
@@ -30,10 +31,29 @@
     width: 45px;
     height: 45px;
   }
+  span {
+    font-size: 1.1rem;
+  }
+
+  &:hover {
+    background: #f0f0f0;
+  }
 }
 
 .platforms-cms {
   border: 1px solid #f9dc24;
+}
+
+.wordpress-tools{
+  border: 1px solid #49a046;
+}
+
+.dev-tools-systems {
+  border: 1px solid #eb8a44;
+}
+
+.languages{
+  border: 1px solid #7ca9ff;
 }
 
 // Media queries

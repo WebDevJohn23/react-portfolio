@@ -73,7 +73,8 @@ export default function Stack() {
 
     return (
         <section aria-labelledby="stack-title">
-            <h2 id="stack-title">Stack</h2>
+            <div className="divider"></div>
+            <h2 id="section-title">My <span>Stack</span></h2>
 
             <div className="stack-category-grid">
                 {categories.map(({key, label}) => (
@@ -95,7 +96,7 @@ export default function Stack() {
                                             </svg>
                                         )}
 
-                                        <h4 style={{marginTop: 8, marginBottom: 0}}>
+                                        <span style={{marginTop: 8, marginBottom: 0}}>
                                             {url ? (
                                                 <a href={url} target="_blank" rel="noopener noreferrer">
                                                     {title}
@@ -103,7 +104,7 @@ export default function Stack() {
                                             ) : (
                                                 title
                                             )}
-                                        </h4>
+                                        </span>
                                     </article>
                                 );
                             })}
