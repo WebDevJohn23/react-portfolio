@@ -1,7 +1,13 @@
+import Projects from "../sections/Projects.jsx";
+import Hero from "../sections/Hero.jsx";
+
+
 export default function MainContent() {
+
     return (
         <main>
-            <p>Main content here</p>
+            <Projects />
+            <Hero />
         </main>
     );
 }
