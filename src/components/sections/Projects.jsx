@@ -1,6 +1,7 @@
 // src/components/layout/Projects.jsx
 import { useEffect, useState } from "react";
 import { getProjects } from "../../api/getProjects";
+import projectsData from "../../api/projects.json";
 
 // Helpers to safely read across wp/v2 and acf/v3 payloads
 function getTitle(item) {
@@ -36,6 +37,7 @@ export default function Projects() {
         (async () => {
             try {
                 const data = await getProjects({ signal: ac.signal });
+                //const data = projectsData; ** if loading from json
                 setProjects(Array.isArray(data) ? data : []);
             } catch (e) {
                 setErr(e);
