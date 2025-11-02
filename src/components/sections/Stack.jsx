@@ -1,14 +1,30 @@
 // src/components/layout/stack.jsx
 import { useEffect, useState } from "react";
-import { getStack} from "../../api/getStack.js";
+import { getStack } from "../../api/getStack.js";
 
-// Helpers to safely read across wp/v2 and acf/v3 payloads
-function getTitle1(item) {
-    const raw = item?.title?.rendered ?? item?.acf?.title ?? "Untitled";
-    return typeof raw === "string" ? raw : "";
-}``
+function getTitle(item) {
+    return item?.acf?.stack_item_name ?? item?.title?.rendered ?? "Untitled";
+}
 
+function getIconValue(item) {
+    return item?.acf?.stack_item_icon_value ?? null;
+}
 
+function getCategory(item) {
+    return item?.acf?.stack_category ?? "";
+}
+
+function getUrl(item) {
+    return item?.acf?.stack_item_url ?? null;
+}
+
+function getColor(item) {
+    return item?.acf?.stack_item_color ?? "currentColor";
+}
+
+function getOrder(item) {
+    return parseInt(item?.acf?.stack_order ?? 999);
+}
 
 
 export default function Stack() {
@@ -21,7 +37,11 @@ export default function Stack() {
         (async () => {
             try {
                 const data = await getStack({ signal: ac.signal });
-                setStack(Array.isArray(data) ? data : []);
+                // Sort by stack_order
+                const sorted = Array.isArray(data)
+                    ? data.sort((a, b) => getOrder(a) - getOrder(b))
+                    : [];
+                setStack(sorted);
             } catch (e) {
                 setErr(e);
             } finally {
@@ -44,20 +64,48 @@ export default function Stack() {
                     gap: "16px",
                 }}
             >
-                {stack.map((p) => {
-                    const title = getTitle1(p);
+                {stack.map((item) => {
+                    const title = getTitle(item);
+                    const iconValue = getIconValue(item);
+                    const category = getCategory(item);
+                    const url = getUrl(item);
+                    const color = getColor(item);
 
                     return (
-                        <article key={p.id ?? p.slug} style={{ border: "1px solid #eee", padding: 12 }}>
-                            <h3
-                                dangerouslySetInnerHTML={{ __html: title }}
-                                style={{ marginTop: 0 }}
-                            />
+                        <article
+                            key={item.id ?? item.slug}
+                            style={{ border: "1px solid #eee", padding: 12 }}
+                            data-category={category}
+                        >
+                            {/* Icon placeholder - we'll add icon component later */}
+                            {iconValue && (
+                                <div style={{ color: color }}>
+                                    {/* Icon will go here */}
+                                    <span>{iconValue}</span>
+                                </div>
+                            )}
 
+                            <h3 style={{ marginTop: 0 }}>
+                                {url ? (
+                                    <a href={url} target="_blank" rel="noopener noreferrer">
+                                        {title}
+                                    </a>
+                                ) : (
+                                    title
+                                )}
+                            </h3>
+
+                            <small>{category}</small>
+                            {iconValue && (
+                                <svg style={{ fill: color, width: 48, height: 48 }}>
+                                    <use xlinkHref={`#${iconValue}`}></use>
+                                </svg>
+                            )}
                         </article>
                     );
                 })}
             </div>
+
         </section>
     );
 }

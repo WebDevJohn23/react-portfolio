@@ -8,8 +8,8 @@ export default function MainContent() {
     return (
         <main>
             <Hero />
-            <Projects />
             <Stack />
+            <Projects />=
         </main>
     );
 }
