@@ -72,7 +72,7 @@ export default function Stack() {
     ];
 
     return (
-        <section aria-labelledby="stack-title">
+        <section id="stack" aria-labelledby="stack-title">
             <div className="divider"></div>
             <h2 id="section-title">My <span>Stack</span></h2>
 
