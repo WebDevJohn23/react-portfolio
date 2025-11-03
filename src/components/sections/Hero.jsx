@@ -85,6 +85,10 @@ export default function Hero() {
               <span>{button2Text}</span>
             </a>
           </div>
+          <p className="hero-techline">
+            *This site is built with React and pulls its content from a headless WordPress backend,
+            with automatic deployment through GitHub Actions.
+          </p>
         </div>
       </div>
     </section>
