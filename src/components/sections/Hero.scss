@@ -2,7 +2,7 @@
 
 
 .hero-section {
-  background-image: url(https://portfolio.johnathanjulig.com/wp-content/uploads/2025/09/download.svg);
+  background-image: url(../../assets/images/background-circles.svg);
   background-size: contain;
   background-repeat: repeat;
   background-attachment: scroll;
@@ -19,7 +19,11 @@
   font-family: 'Roboto Mono', sans-serif;
   font-size: 1.3rem;
   text-align: left;
+}
 
+.hero-description {
+  text-align: left;
+  max-width: 1000px;
 }
 
 .hero-headline {
