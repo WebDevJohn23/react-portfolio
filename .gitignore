@@ -40,3 +40,8 @@ Thumbs.db
 
 # Debug
 debug.log
+
+# keys
+id_siteground*
+# local data
+src/api/projects.json
