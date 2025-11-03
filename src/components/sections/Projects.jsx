@@ -49,7 +49,9 @@ export default function Projects() {
   if (err) return <div>Failed to load projects.</div>;
 
   return (
-    <section id="projects" aria-labelledby="projects-title">
+    <section aria-labelledby="projects-title">
+      <a className="anchor" id="projects"></a>
+      <div className="divider"></div>
       <h2 id="projects-title">Projects</h2>
       <div
         style={{

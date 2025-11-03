@@ -68,7 +68,8 @@ export default function Stack() {
   ];
 
   return (
-    <section id="stack" aria-labelledby="stack-title">
+    <section aria-labelledby="stack-title">
+      <a className="anchor" id="stack"></a>
       <div className="divider"></div>
       <h2 id="section-title">
         My <span>Stack</span>
