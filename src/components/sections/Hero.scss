@@ -40,6 +40,7 @@
   display: flex;
   flex-direction: row;
   gap: 15px;
+  padding-top: 25px;
 }
 
 .hero-button {
@@ -63,4 +64,11 @@
   background-color: transparent;
   border: 1px solid #efa169;
   color: #efa169;
+}
+
+@media screen and (max-width: 500px) {
+  .hero-section {
+
+    height: 60vh;
+  }
 }

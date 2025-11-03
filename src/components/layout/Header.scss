@@ -6,14 +6,19 @@
   font-weight: 700;
   max-width: 1200px;
   margin: auto;
-  position: absolute;
+  position: sticky;
   top: 0;
   z-index: 9999;
   background: #16213e;
   @extend .padding-20;
 
   .logo {
+    text-align: center;
     @extend .padding-20;
+  }
+
+  .logo a {
+    color: #0074db;
   }
 
   a {
@@ -58,7 +63,7 @@ ul {
     display: grid !important;
     grid-template-columns: repeat(1, 1fr) !important;
 
-    .menu-item {
+    .menu-item, .logo {
       padding: 5px;
     }
   }
