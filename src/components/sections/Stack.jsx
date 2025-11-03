@@ -53,7 +53,6 @@ export default function Stack() {
   if (err) return <div>Failed to load stack.</div>;
   // Group items by category
   const groupedStack = stack.reduce((acc, item) => {
-    console.log('Stack item:', item);
     const cat = getCategory(item);
     if (!acc[cat]) acc[cat] = [];
     acc[cat].push(item);
