@@ -70,8 +70,9 @@ export default function About() {
   const statThreeText = getStatThreeText(aboutData);
   const statFourText = getStatFourText(aboutData);
   const aboutMeInfo = getAboutMeInfo(aboutData);
+  console.log(aboutMeInfo, typeof aboutMeInfo);
   return (
-    <section id="about" className="about-section" aria-labelledby="about-title">
+    <section className="about-section" aria-labelledby="about-title">
       <a className="anchor" id="about"></a>
       <div className="divider"></div>
       <h2 id="section-title">
@@ -79,23 +80,28 @@ export default function About() {
       </h2>
       <div className="about-content">
         <div className="about-left">
-          <p className="about-description">
-            <span className="about-number" dangerouslySetInnerHTML={{ __html: statOneNumber }} />
-            <span className="about-text" dangerouslySetInnerHTML={{ __html: statOneText }} />
-          </p>
+          <div className="about-description-grid">
+            <p className="about-description">
+              <span className="about-number" dangerouslySetInnerHTML={{ __html: statOneNumber }} />
+              <span className="about-text" dangerouslySetInnerHTML={{ __html: statOneText }} />
+            </p>
 
-          <p className="about-description">
-            <span className="about-number" dangerouslySetInnerHTML={{ __html: statTwoNumber }} />
-            <span className="about-text" dangerouslySetInnerHTML={{ __html: statTwoText }} />
-          </p>
-          <p className="about-description">
-            <span className="about-number" dangerouslySetInnerHTML={{ __html: statThreeNumber }} />
-            <span className="about-text" dangerouslySetInnerHTML={{ __html: statThreeText }} />
-          </p>
-          <p className="about-description">
-            <span className="about-number" dangerouslySetInnerHTML={{ __html: statFourNumber }} />
-            <span className="about-text" dangerouslySetInnerHTML={{ __html: statFourText }} />
-          </p>
+            <p className="about-description">
+              <span className="about-number" dangerouslySetInnerHTML={{ __html: statTwoNumber }} />
+              <span className="about-text" dangerouslySetInnerHTML={{ __html: statTwoText }} />
+            </p>
+            <p className="about-description">
+              <span
+                className="about-number"
+                dangerouslySetInnerHTML={{ __html: statThreeNumber }}
+              />
+              <span className="about-text" dangerouslySetInnerHTML={{ __html: statThreeText }} />
+            </p>
+            <p className="about-description">
+              <span className="about-number" dangerouslySetInnerHTML={{ __html: statFourNumber }} />
+              <span className="about-text" dangerouslySetInnerHTML={{ __html: statFourText }} />
+            </p>
+          </div>
         </div>
         <div className="about-right">
           <p className="about-info">

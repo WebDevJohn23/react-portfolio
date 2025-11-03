@@ -1,16 +1,21 @@
 .about-content {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 1rem 2rem;
 
 }
 
-.about-left {
+.about-description-grid {
   display: flex;
   flex-direction: row;
-  width: 40% !important;
   flex-wrap: wrap;
   gap: 1rem 2rem;
+  justify-content: center;
+}
+
+.about-left {
+  width: 40% !important;
+  align-content: center;
 
 }
 
@@ -20,6 +25,7 @@
 
 
 .about-description {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,11 +34,22 @@
   border-radius: 10px;
   width: 40%;
   color: #a0a0a0;
+
 }
 
 .about-info {
   justify-content: center;
   align-content: center;
+  font-size: 1.1rem;
+
+  p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    unicode-bidi: isolate;
+  }
 
 }
 
