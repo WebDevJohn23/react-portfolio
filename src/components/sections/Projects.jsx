@@ -52,7 +52,9 @@ export default function Projects() {
     <section aria-labelledby="projects-title">
       <a className="anchor" id="projects"></a>
       <div className="divider"></div>
-      <h2 id="projects-title">Projects</h2>
+      <h2 id="section-title">
+        My <span>Projects</span>
+      </h2>
       <div
         style={{
           display: 'grid',

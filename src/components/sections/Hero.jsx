@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getHero } from '../../api/getHero';
+import { getHomepage } from '../../api/getHomepage.js';
 import './Hero.scss';
 
 function getSubHeadlineTop(data) {
@@ -39,7 +39,7 @@ export default function Hero() {
     const ac = new AbortController();
     (async () => {
       try {
-        const data = await getHero({ signal: ac.signal });
+        const data = await getHomepage({ signal: ac.signal });
         setHeroData(data?.acf);
       } catch (e) {
         setErr(e);
