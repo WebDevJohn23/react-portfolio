@@ -61,8 +61,6 @@ export default function Hero() {
   const button1Url = getButton1Url(heroData);
   const button2Text = getButton2Text(heroData);
   const button2Url = getButton2Url(heroData);
-  const londata = getComputedStyle(document.documentElement).fontSize;
-  console.log(londata);
   return (
     <section id="hero" className="hero-section">
       <div className="hero-inner">
