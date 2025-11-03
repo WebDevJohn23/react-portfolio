@@ -1,3 +1,7 @@
+.stack {
+  background: white;
+}
+
 .stack-card-grid {
   display: flex;
   flex-direction: column;
@@ -63,3 +67,4 @@
     grid-template-columns: repeat(1, 1fr) !important;
   }
 }
+
