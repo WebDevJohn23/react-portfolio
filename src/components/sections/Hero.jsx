@@ -1,4 +1,2 @@
 import './Hero.scss';
-export default function Hero() {
-
-}
+export default function Hero() {}
