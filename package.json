@@ -11,6 +11,7 @@
     "fetch-data": "node src/api/fetch-projects.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "sass": "^1.93.3"
