@@ -70,7 +70,6 @@ export default function About() {
   const statThreeText = getStatThreeText(aboutData);
   const statFourText = getStatFourText(aboutData);
   const aboutMeInfo = getAboutMeInfo(aboutData);
-  console.log(aboutMeInfo, typeof aboutMeInfo);
   return (
     <section className="about-section" aria-labelledby="about-title">
       <a className="anchor" id="about"></a>
