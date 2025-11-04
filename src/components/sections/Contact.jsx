@@ -35,9 +35,7 @@ export default function Contact() {
         const data = await getHomepage({ signal: ac.signal });
         setContactData(data?.acf);
       } catch (e) {
-        setErr(e);
-      } finally {
-        setLoading(false);
+        console.error('Failed to load contact data:', e);
       }
     })();
     return () => ac.abort();
@@ -53,14 +51,9 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('Sending...');
-
+    const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY;
     emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formData,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      )
+      .send('service_o9i6v3c', 'template_7oblvso', formData, publicKey)
       .then(() => {
         setStatus('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
