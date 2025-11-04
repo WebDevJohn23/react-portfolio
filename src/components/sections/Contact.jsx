@@ -39,10 +39,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="contact-section">
-      <div className="contact-inner">
+    <section className="contact-section" aria-labelledby="contact-title">
+      <a className="anchor" id="contact"></a>
+      <div className="divider"></div>
+      <h2 id="section-title">
+        Get In <span>Touch</span>
+      </h2>
+      <div className="contact-form-container">
         <form onSubmit={handleSubmit} className="contact-form">
           <input
+            className="contact-form-field"
             type="text"
             name="name"
             placeholder="Your Name"
@@ -52,6 +58,7 @@ export default function Contact() {
           />
 
           <input
+            className="contact-form-field"
             type="email"
             name="email"
             placeholder="Your Email"
@@ -61,6 +68,7 @@ export default function Contact() {
           />
 
           <textarea
+            className="contact-form-field"
             name="message"
             placeholder="Tell me about your needs..."
             value={formData.message}
@@ -69,7 +77,7 @@ export default function Contact() {
             required
           />
 
-          <button type="submit" className="submit-button">
+          <button type="submit" className="contact-form-submit">
             Send Message
           </button>
 

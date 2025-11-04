@@ -1,0 +1,42 @@
+.contact-section {
+  width: 100%;
+}
+
+.contact-form-container {
+  max-width: 500px !important;
+  margin: 2rem auto !important;
+}
+
+.contact-form .contact-form-field {
+  margin-bottom: 1rem !important;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100% !important;
+  padding: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+  font-size: 1rem !important;
+  font-family: inherit !important;
+  box-shadow: none !important;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.contact-form .contact-form-submit {
+  background: linear-gradient(135deg, #6c63ff, #9c88ff) !important;
+  color: white !important;
+  padding: 15px 30px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
