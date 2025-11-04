@@ -57,7 +57,7 @@ export default function Contact() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formData,
-        'PYpzVIagzNX3CqCcs',
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(() => {
         setStatus('Message sent successfully!');
@@ -78,7 +78,7 @@ export default function Contact() {
       <a className="anchor" id="contact"></a>
       <div className="divider"></div>
       <h2 id="section-title">
-        Get In <span>Touchs</span>
+        Get In <span>Touch</span>
       </h2>
       <div className="contact-form-container">
         <h3 className="contact-headline" dangerouslySetInnerHTML={{ __html: contactHeadline }} />
