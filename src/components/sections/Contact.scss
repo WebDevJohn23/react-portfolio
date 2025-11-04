@@ -61,5 +61,14 @@
 
 .contact-subheadline {
   margin-bottom: 25px;
+}
+
+.contact-additional-textUrl {
+  text-decoration: underline;
+  color: white;
+
+  a {
+    text-decoration-color: white;
+  }
 
 }

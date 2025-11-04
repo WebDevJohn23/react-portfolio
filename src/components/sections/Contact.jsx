@@ -130,10 +130,13 @@ export default function Contact() {
             className="contact-additional-text"
             dangerouslySetInnerHTML={{ __html: additionalText + ' ' }}
           />
-          <span
-            className="contact-additional-textUrl"
-            dangerouslySetInnerHTML={{ __html: additionalTextUrl }}
-          />
+          <a href={`https://${additionalTextUrl}`}>
+            {' '}
+            <span
+              className="contact-additional-textUrl"
+              dangerouslySetInnerHTML={{ __html: additionalTextUrl }}
+            />
+          </a>
         </div>
       </div>
     </section>
