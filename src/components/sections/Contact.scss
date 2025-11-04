@@ -3,9 +3,21 @@
 }
 
 .contact-form-container {
-  max-width: 500px !important;
   margin: 2rem auto !important;
+  justify-items: center;
+  font-size: 1.1rem;
+
+  color: #ffffff;
+  font-weight: 600;
+  overflow: hidden;
+  max-width: 750px;
 }
+
+.contact-form {
+  max-width: 500px !important;
+  margin-top: 50px;
+}
+
 
 .contact-form .contact-form-field {
   margin-bottom: 1rem !important;
@@ -39,4 +51,15 @@
   font-size: 1rem !important;
   font-weight: 600 !important;
   cursor: pointer !important;
+}
+
+.contact-headline {
+  color: #efa169;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.contact-subheadline {
+  margin-bottom: 25px;
+
 }

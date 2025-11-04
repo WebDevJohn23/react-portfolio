@@ -1,14 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import './Contact.scss';
+import { getHomepage } from '../../api/getHomepage.js';
+
+function getContactHeadline(data) {
+  return data?.contact_section?.['contact_section_headline'] ?? '';
+}
+
+function getContactSubHeadline(data) {
+  return data?.contact_section?.['contact_section_subheadline'] ?? '';
+}
+
+function getAdditionalText(data) {
+  return data?.contact_section?.['contact_section_additional_text'] ?? '';
+}
+
+function getAdditionalTextUrl(data) {
+  return data?.contact_section?.['contact_section_additional_text_url'] ?? '';
+}
 
 export default function Contact() {
+  const [contactData, setContactData] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
   const [status, setStatus] = useState('');
+
+  useEffect(() => {
+    const ac = new AbortController();
+    (async () => {
+      try {
+        const data = await getHomepage({ signal: ac.signal });
+        setContactData(data?.acf);
+      } catch (e) {
+        setErr(e);
+      } finally {
+        setLoading(false);
+      }
+    })();
+    return () => ac.abort();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -38,6 +71,10 @@ export default function Contact() {
       });
   };
 
+  const contactHeadline = getContactHeadline(contactData);
+  const contactSubHeadline = getContactSubHeadline(contactData);
+  const additionalText = getAdditionalText(contactData);
+  const additionalTextUrl = getAdditionalTextUrl(contactData);
   return (
     <section className="contact-section" aria-labelledby="contact-title">
       <a className="anchor" id="contact"></a>
@@ -46,6 +83,12 @@ export default function Contact() {
         Get In <span>Touch</span>
       </h2>
       <div className="contact-form-container">
+        <h3 className="contact-headline" dangerouslySetInnerHTML={{ __html: contactHeadline }} />
+        <span
+          className="contact-subheadline"
+          dangerouslySetInnerHTML={{ __html: contactSubHeadline }}
+        />
+
         <form onSubmit={handleSubmit} className="contact-form">
           <input
             className="contact-form-field"
@@ -76,13 +119,24 @@ export default function Contact() {
             rows="6"
             required
           />
-
-          <button type="submit" className="contact-form-submit">
-            Send Message
-          </button>
+          <div>
+            <button type="submit" className="contact-form-submit contact-form-field">
+              Send Message
+            </button>
+          </div>
 
           {status && <p className="form-status">{status}</p>}
         </form>
+        <div className="contact-additional">
+          <span
+            className="contact-additional-text"
+            dangerouslySetInnerHTML={{ __html: additionalText + ' ' }}
+          />
+          <span
+            className="contact-additional-textUrl"
+            dangerouslySetInnerHTML={{ __html: additionalTextUrl }}
+          />
+        </div>
       </div>
     </section>
   );
