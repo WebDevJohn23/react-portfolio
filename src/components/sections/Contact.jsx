@@ -51,9 +51,14 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('Sending...');
-    const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY;
+
     emailjs
-      .send('service_o9i6v3c', 'template_7oblvso', formData, publicKey)
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formData,
+        'PYpzVIagzNX3CqCcs',
+      )
       .then(() => {
         setStatus('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
@@ -73,7 +78,7 @@ export default function Contact() {
       <a className="anchor" id="contact"></a>
       <div className="divider"></div>
       <h2 id="section-title">
-        Get In <span>Touch</span>
+        Get In <span>Touchs</span>
       </h2>
       <div className="contact-form-container">
         <h3 className="contact-headline" dangerouslySetInnerHTML={{ __html: contactHeadline }} />
