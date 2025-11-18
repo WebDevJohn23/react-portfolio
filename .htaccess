@@ -1,3 +1,17 @@
+# Cache rules
+<FilesMatch "\.html$">
+  Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+</FilesMatch>
+
+<FilesMatch "\.(js|css)$">
+  Header set Cache-Control "public, max-age=0, must-revalidate"
+</FilesMatch>
+
+<FilesMatch "\.(png|jpg|jpeg|gif|svg|webp|ico|woff|woff2)$">
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# SPA routing
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /

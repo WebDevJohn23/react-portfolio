@@ -1,8 +1,10 @@
 // PAGE: src/components/sections/Hero.js
+import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';
 import { getHomepage } from '../../api/getHomepage.js';
 import './Hero.scss';
 
+// should really be a loop... but keeping it simple for now
 function getSubHeadlineTop(data) {
   return data?.hero_section?.['sub_headline_-_top'] ?? '';
 }
@@ -59,34 +61,59 @@ export default function Hero() {
   const subHeadlineTop = getSubHeadlineTop(heroData);
   const mainHeadline = getMainHeadline(heroData);
   const subHeadlineBottom = getSubHeadlineBottom(heroData);
+
   const button1Text = getButton1Text(heroData);
   const button1Url = getButton1Url(heroData);
+
   const button2Text = getButton2Text(heroData);
   const button2Url = getButton2Url(heroData);
+
   return (
     <section id="hero" className="hero-section">
       <div className="hero-inner">
         <div className="hero-content">
           <p className="hero-greeting">
-            <span>{subHeadlineTop}</span>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(subHeadlineTop),
+              }}
+            />
           </p>
 
           <h1 className="hero-headline">
-            <span>{mainHeadline}</span>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(mainHeadline),
+              }}
+            />
           </h1>
 
           <p className="hero-description">
-            <span>{subHeadlineBottom}</span>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(subHeadlineBottom),
+              }}
+            />
           </p>
 
           <div className="hero-buttons">
             <a href={button1Url} className="hero-left-button">
-              <span>{button1Text}</span>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(button1Text),
+                }}
+              />
             </a>
+
             <a href={button2Url} className="hero-right-button hero-button--shake">
-              <span>{button2Text}</span>
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(button2Text),
+                }}
+              />
             </a>
           </div>
+
           <p className="hero-techline">
             *This site is built with React and pulls its content from a headless WordPress backend,
             with automatic deployment through GitHub Actions.
