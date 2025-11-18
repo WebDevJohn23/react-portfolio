@@ -1,31 +1,52 @@
-// PAGE: src/components/sections/Projects.js
+// PAGE: src/components/sections/Projects.jsx
 import { useEffect, useState } from 'react';
 import { getProjects } from '../../api/getProjects';
 import './Projects.scss';
 
-// Optional… only if you prefer ID→label mapping when class_list is missing
 const TECHNOLOGY_MAP = {
-  // id: 'Label'
-  3: 'WordPress',
-  5: 'PHP',
-  7: 'WP All Import',
-  9: 'MySQL',
   34: 'ACF Pro',
-  35: 'Custom Post Types',
-  36: 'Oxygen Builder',
-  37: 'FacetWP',
+  27: 'Advanced Custom Fields',
+  37: 'CPT',
+  25: 'CSS',
+  13: 'Custom Plugin Development',
+  18: 'Custom Theme Development',
+  16: 'Divi',
+  15: 'DocuSign API',
+  33: 'Elementor Pro',
+  32: 'Email Automation',
+  35: 'FacetWP',
+  21: 'Figma',
+  4: 'HTML',
+  6: 'JavaScript',
+  5: 'MySQL',
+  9: 'Oxygen Builder',
+  20: 'PDF Invoice Integration',
+  3: 'PHP',
+  10: 'SEO',
+  26: 'Theme Migration',
 };
 
-// Slug→label mapping when you have class_list entries like "technology-php"
 const TECHNOLOGY_LABELS_BY_SLUG = {
   'acf-pro': 'ACF Pro',
-  cpt: 'Custom Post Types',
+  'advanced-custom-fields': 'Advanced Custom Fields',
+  cpt: 'CPT',
+  css: 'CSS',
+  'custom-plugin-development': 'Custom Plugin Development',
+  'custom-theme-development': 'Custom Theme Development',
+  divi: 'Divi',
+  'docusign-api': 'DocuSign API',
+  'elementor-pro': 'Elementor Pro',
+  'email-automation': 'Email Automation',
   facetwp: 'FacetWP',
+  figma: 'Figma',
+  html: 'HTML',
+  javascript: 'JavaScript',
   mysql: 'MySQL',
   'oxygen-builder': 'Oxygen Builder',
+  'pdf-invoice-integration': 'PDF Invoice Integration',
   php: 'PHP',
-  wordpress: 'WordPress',
-  'wp-all-import': 'WP All Import',
+  seo: 'SEO',
+  'theme-migration': 'Theme Migration',
 };
 
 // Helpers to safely read across wp/v2 and acf/v3 payloads
