@@ -16,7 +16,7 @@ export default function App() {
           marginBottom: '3rem',
         }}
       >
-        Last updated: November 3rd, 2025 – additional updates in progress.
+        Last updated: November 18th, 2025 – additional updates in progress.
       </p>
     </>
   );
