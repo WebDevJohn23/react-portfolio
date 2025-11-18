@@ -6,7 +6,7 @@ import Contact from '../sections/Contact.jsx';
 import Hero from '../sections/Hero.jsx';
 import Projects from '../sections/Projects.jsx';
 import Stack from '../sections/Stack.jsx';
-import './MainComponent.scss';
+import './MainContent.scss';
 
 export default function MainContent() {
   return (
