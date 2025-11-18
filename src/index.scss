@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
@@ -32,7 +35,12 @@ body {
   padding: 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Lora', sans-serif;
   font-size: 36px;
   font-weight: 700;
@@ -40,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h2 {
   span {
-    color: #7ca9ff;;
+    color: #7ca9ff;
   }
 }
 
