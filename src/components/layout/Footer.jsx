@@ -1,11 +1,13 @@
 // PAGE: src/components/layout/Footer.jsx
-// Global site footer
 import './Footer.scss';
+
+const updatedAt =
+  typeof __BUILD_DATE__ !== 'undefined' ? new Date(__BUILD_DATE__).toLocaleDateString() : 'unknown';
 
 export default function Footer() {
   return (
     <footer className="global-footer">
-      Last updated: November 18th, 2025 – additional updates in progress.
+      This site last updated: {updatedAt} – additional imporvements in progress.
     </footer>
   );
 }
