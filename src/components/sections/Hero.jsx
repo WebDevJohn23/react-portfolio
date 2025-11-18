@@ -1,3 +1,4 @@
+// PAGE: src/components/sections/Hero.js
 import { useEffect, useState } from 'react';
 import { getHomepage } from '../../api/getHomepage.js';
 import './Hero.scss';
@@ -30,6 +31,7 @@ function getButton2Url(data) {
   return data?.hero_section?.['button_2_url'] ?? '/#contact';
 }
 
+// Fetch hero section fields from WordPress
 export default function Hero() {
   const [heroData, setHeroData] = useState(null);
   const [err, setErr] = useState(null);
@@ -70,7 +72,7 @@ export default function Hero() {
           </p>
 
           <h1 className="hero-headline">
-            <span dangerouslySetInnerHTML={{ __html: mainHeadline }} />
+            <span>{mainHeadline}</span>
           </h1>
 
           <p className="hero-description">

@@ -1,4 +1,5 @@
-// src/api/getHomepage.js
+// PAGE: src/api/getHomepage.js
+// Fetch homepage content from WordPress REST API
 export async function getHomepage() {
   const url = `https://portfolio.johnathanjulig.com/wp-json/wp/v2/pages/94?acf_format=standard&timestamp=${Date.now()}`;
 

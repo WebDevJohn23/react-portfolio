@@ -1,3 +1,5 @@
+// PAGE: src/components/layout/Header.jsx
+// Site header with navigation links
 import './Header.scss';
 
 export default function Header() {

@@ -1,3 +1,4 @@
+// PAGE: src/components/sections/About.js
 import { useEffect, useState } from 'react';
 import { getHomepage } from '../../api/getHomepage.js';
 import './About.scss';
@@ -42,6 +43,7 @@ export default function About() {
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Fetch About section fields from WordPress
   useEffect(() => {
     const ac = new AbortController();
     (async () => {
@@ -81,30 +83,27 @@ export default function About() {
         <div className="about-left">
           <div className="about-description-grid">
             <p className="about-description">
-              <span className="about-number" dangerouslySetInnerHTML={{ __html: statOneNumber }} />
-              <span className="about-text" dangerouslySetInnerHTML={{ __html: statOneText }} />
+              <span className="about-number">{statOneNumber}</span>
+              <span className="about-text">{statOneText}</span>
             </p>
 
             <p className="about-description">
-              <span className="about-number" dangerouslySetInnerHTML={{ __html: statTwoNumber }} />
-              <span className="about-text" dangerouslySetInnerHTML={{ __html: statTwoText }} />
+              <span className="about-number">{statTwoNumber}</span>
+              <span className="about-text">{statTwoText}</span>
             </p>
             <p className="about-description">
-              <span
-                className="about-number"
-                dangerouslySetInnerHTML={{ __html: statThreeNumber }}
-              />
-              <span className="about-text" dangerouslySetInnerHTML={{ __html: statThreeText }} />
+              <span className="about-number">{statThreeNumber}</span>
+              <span className="about-text">{statThreeText}</span>
             </p>
             <p className="about-description">
-              <span className="about-number" dangerouslySetInnerHTML={{ __html: statFourNumber }} />
-              <span className="about-text" dangerouslySetInnerHTML={{ __html: statFourText }} />
+              <span className="about-number">{statFourNumber}</span>
+              <span className="about-text">{statFourText}</span>
             </p>
           </div>
         </div>
         <div className="about-right">
           <p className="about-info">
-            <span dangerouslySetInnerHTML={{ __html: aboutMeInfo }} />
+            <span>{aboutMeInfo}</span>
           </p>
         </div>
       </div>

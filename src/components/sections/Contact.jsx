@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+// PAGE: src/components/sections/Contact.js
 import emailjs from '@emailjs/browser';
-import './Contact.scss';
+import { useEffect, useState } from 'react';
 import { getHomepage } from '../../api/getHomepage.js';
+import './Contact.scss';
 
 function getContactHeadline(data) {
   return data?.contact_section?.['contact_section_headline'] ?? '';
@@ -28,6 +29,7 @@ export default function Contact() {
   });
   const [status, setStatus] = useState('');
 
+  // Fetch contact copy from WordPress
   useEffect(() => {
     const ac = new AbortController();
     (async () => {
@@ -81,11 +83,8 @@ export default function Contact() {
         Get In <span>Touch</span>
       </h2>
       <div className="contact-form-container">
-        <h3 className="contact-headline" dangerouslySetInnerHTML={{ __html: contactHeadline }} />
-        <span
-          className="contact-subheadline"
-          dangerouslySetInnerHTML={{ __html: contactSubHeadline }}
-        />
+        <h3 className="contact-headline">{contactHeadline}</h3>
+        <span className="contact-subheadline">{contactSubHeadline}</span>
 
         <form onSubmit={handleSubmit} className="contact-form">
           <input
@@ -126,16 +125,10 @@ export default function Contact() {
           {status && <p className="form-status">{status}</p>}
         </form>
         <div className="contact-additional">
-          <span
-            className="contact-additional-text"
-            dangerouslySetInnerHTML={{ __html: additionalText + ' ' }}
-          />
+          <span className="contact-additional-text">{additionalText} </span>
           <a href={`https://${additionalTextUrl}`}>
             {' '}
-            <span
-              className="contact-additional-textUrl"
-              dangerouslySetInnerHTML={{ __html: additionalTextUrl }}
-            />
+            <span className="contact-additional-textUrl">{additionalTextUrl}</span>
           </a>
         </div>
       </div>

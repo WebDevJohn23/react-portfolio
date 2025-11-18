@@ -1,4 +1,7 @@
 /*
+// PAGE: src/api/fetch-projects.js
+// Node script to snapshot WP projects to JSO
+// Not used - just for one time fetch
 import fs from 'fs';
 
 async function fetchProjects() {

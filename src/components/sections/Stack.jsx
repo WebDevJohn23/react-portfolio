@@ -1,7 +1,7 @@
-// src/components/layout/stack.jsx
-import './Stack.scss';
+// PAGE: src/components/sections/Stack.js
 import { useEffect, useState } from 'react';
 import { getStack } from '../../api/getStack.js';
+import './Stack.scss';
 
 function getTitle(item) {
   return item?.acf?.stack_item_name ?? item?.title?.rendered ?? 'Untitled';
@@ -27,6 +27,7 @@ function getOrder(item) {
   return parseInt(item?.acf?.stack_order ?? 999);
 }
 
+// Fetch stack items and group by category
 export default function Stack() {
   const [stack, setStack] = useState([]);
   const [err, setErr] = useState(null);

@@ -1,7 +1,7 @@
-// src/components/layout/Projects.jsx
-import './Projects.scss';
+// PAGE: src/components/sections/Projects.js
 import { useEffect, useState } from 'react';
 import { getProjects } from '../../api/getProjects';
+import './Projects.scss';
 
 // Optional… only if you prefer ID→label mapping when class_list is missing
 const TECHNOLOGY_MAP = {
@@ -114,6 +114,7 @@ function getTechnologies(item) {
   return labelsFromIds;
 }
 
+// Fetch projects section fields from WordPress
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [err, setErr] = useState(null);
@@ -170,11 +171,9 @@ export default function Projects() {
 
               {/* 2) Title */}
               <div className="project-card-info">
-                <h3
-                  className="project-title"
-                  dangerouslySetInnerHTML={{ __html: title }}
-                  style={{ marginTop: 12, marginBottom: 8 }}
-                />
+                <h3 className="project-title" style={{ marginTop: 12, marginBottom: 8 }}>
+                  {title}
+                </h3>
 
                 {/* 3) Technology */}
                 {tech.length > 0 && (
@@ -189,11 +188,9 @@ export default function Projects() {
 
                 {/* 4) Description */}
                 {desc && (
-                  <p
-                    className="project-desc"
-                    dangerouslySetInnerHTML={{ __html: desc }}
-                    style={{ marginBottom: 12 }}
-                  />
+                  <p className="project-desc" style={{ marginBottom: 12 }}>
+                    {desc}
+                  </p>
                 )}
 
                 {/* 5) Link */}

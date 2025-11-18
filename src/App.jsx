@@ -1,3 +1,5 @@
+// PAGE: src/app.jsx
+// Header + main content
 import { Header, MainContent } from './components';
 
 export default function App() {
