@@ -3,14 +3,6 @@
 This project is a personal portfolio built with **React (Vite)** and powered by a **Headless WordPress backend** using **Advanced Custom Fields (ACF)**.
 It demonstrates how to fetch structured content from a CMS and render it dynamically on a modern frontend.
 
-The goal was to create a fast, maintainable portfolio site while showing familiarity with:
-
-- React component architecture
-- Working with REST APIs
-- Clean, readable code
-- A headless CMS workflow
-- External service integrations (EmailJS)
-
 ---
 
 ## 🚀 Features
@@ -24,29 +16,34 @@ The React app fetches these via the WP REST API and renders them as plain text.
 
 The project uses a clear structure for:
 
-- Layout (`Header`, `MainContent`)
-- Page sections (`Hero`, `Projects`, `About`, `Stack`, `Contact`)
-- API utilities (fetching ACF fields from WordPress endpoints)
+- Layout
+- Page sections
+- API utilities
+- Reusable components
 
-Each major file includes a brief header comment describing its purpose.
+### ✔ Safe, Clean Rendering
 
-### ✔ No HTML Injection / Safe Rendering
+All dynamic fields are sanitized and rendered cleanly.
 
-Originally the project used `dangerouslySetInnerHTML` in a few places, but since all ACF fields are plain text, these were refactored to standard `{value}` rendering for clarity and safety.
+### ✔ EmailJS Contact Form
 
-### ✔ Contact Form via EmailJS
-
-The contact form sends messages directly to an email inbox using EmailJS with:
-
-- service ID
-- template ID
-- public key
-
-No secrets are exposed, as EmailJS is designed for client-side use.
+The contact form sends messages via EmailJS using service ID, template ID, and public key.
 
 ### ✔ Fast Build with Vite
 
-Vite provides instant hot reloads and a small production bundle.
+Instant HMR and optimized production build.
+
+---
+
+## 📸 Screenshots
+
+### **Hero Section**
+
+![Hero Section](src/assets/images/hero.png)
+
+### **Projects Section**
+
+![Projects Section](src/assets/images/projects.png)
 
 ---
 
@@ -54,59 +51,49 @@ Vite provides instant hot reloads and a small production bundle.
 
 ```
 src/
-  api/                # Fetch functions for ACF fields
+  api/
   components/
-    layout/           # Header, MainContent
-    sections/         # Hero, Projects, About, Stack, Contact
-  assets/             # Static images
-  App.jsx             # Root component
-  main.jsx            # Entry point
+    layout/
+    sections/
+  assets/
+  App.jsx
+  main.jsx
 ```
-
-Each file includes a top-of-file comment describing its role.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **React (Vite)**
-- **Headless WordPress + ACF**
-- **EmailJS**
-- **CSS / Responsive Layout**
-- **JavaScript (ES6+)**
+- React (Vite)
+- Headless WordPress + ACF
+- EmailJS
+- JavaScript (ES6+)
+- CSS / SCSS
 
 ---
 
 ## 🔌 Environment Variables
 
-Create a `.env` file using:
-
 ```
-VITE_EMAILJS_SERVICE_ID=xxxx
-VITE_EMAILJS_TEMPLATE_ID=xxxx
-VITE_EMAILJS_PUBLIC_KEY=xxxx
+VITE_EMAILJS_SERVICE_ID=xxxxx
+VITE_EMAILJS_TEMPLATE_ID=xxxxx
+VITE_EMAILJS_PUBLIC_KEY=xxxxx
 ```
-
-These values are public-safe and required for the contact form to work.
 
 ---
 
-## ▶️ Running the Project Locally
+## ▶️ Running the Project
 
 ```
 npm install
 npm run dev
 ```
 
-Then open:
-
-```
-http://localhost:5173
-```
+Open: `http://localhost:5173`
 
 ---
 
-## 📦 Production Build
+## 📦 Build
 
 ```
 npm run build
@@ -115,16 +102,6 @@ npm run preview
 
 ---
 
-## 🧩 API Endpoints (WordPress)
-
-Example endpoints queried by the project:
-
-- `/wp-json/wp/v2/pages/<id>` – Homepage fields (hero, about, contact text)
-- `/wp-json/wp/v2/project` – Custom post type for project entries
-- `/wp-json/wp/v2/stack` – Custom post type for tech stack items
-
----
-
 ## 📄 License
 
-This project is for personal portfolio purposes.
+Personal portfolio project.
