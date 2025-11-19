@@ -1,10 +1,12 @@
 // PAGE: src/components/sections/Stack.js
+import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';
 import { getStack } from '../../api/getStack.js';
 import './Stack.scss';
 
 function getTitle(item) {
-  return item?.acf?.stack_item_name ?? item?.title?.rendered ?? 'Untitled';
+  const raw = item?.acf?.stack_item_name ?? item?.title?.rendered ?? 'Untitled';
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getIconValue(item) {
@@ -27,7 +29,6 @@ function getOrder(item) {
   return parseInt(item?.acf?.stack_order ?? 999);
 }
 
-// Fetch stack items and group by category
 export default function Stack() {
   const [stack, setStack] = useState([]);
   const [err, setErr] = useState(null);
@@ -38,7 +39,6 @@ export default function Stack() {
     (async () => {
       try {
         const data = await getStack({ signal: ac.signal });
-        // Sort by stack_order
         const sorted = Array.isArray(data) ? data.sort((a, b) => getOrder(a) - getOrder(b)) : [];
         setStack(sorted);
       } catch (e) {
@@ -50,9 +50,9 @@ export default function Stack() {
     return () => ac.abort();
   }, []);
 
-  if (loading) return <div>Loading…</div>;
+  if (loading) return null;
   if (err) return <div>Failed to load stack.</div>;
-  // Group items by category
+
   const groupedStack = stack.reduce((acc, item) => {
     const cat = getCategory(item);
     if (!acc[cat]) acc[cat] = [];
@@ -60,7 +60,6 @@ export default function Stack() {
     return acc;
   }, {});
 
-  // Category display names and order
   const categories = [
     { key: 'platforms-cms', label: 'Platforms & CMS' },
     { key: 'wordpress-tools', label: 'WordPress Tools' },
@@ -82,9 +81,10 @@ export default function Stack() {
             <h3>{label}</h3>
             <div className="stack-card-grid">
               {(groupedStack[key] || []).map((item) => {
-                const title = getTitle(item);
-                const iconValue = getIconValue(item); // may be a URL or a sprite id
-                const url = getUrl(item);
+                const title = DOMPurify.sanitize(getTitle(item));
+                const iconValue = getIconValue(item);
+                //const url = getUrl(item);
+                const url = ''; // Temporarily disable URLs
                 const color = getColor(item);
 
                 const isFileIcon =

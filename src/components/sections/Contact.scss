@@ -16,15 +16,15 @@
 .contact-form {
   max-width: 500px !important;
   margin-top: 50px;
+  margin-bottom: 25px;
 }
-
 
 .contact-form .contact-form-field {
   margin-bottom: 1rem !important;
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"],
+.contact-form input[type='text'],
+.contact-form input[type='email'],
 .contact-form textarea {
   width: 100% !important;
   padding: 12px !important;
@@ -70,5 +70,4 @@
   a {
     text-decoration-color: white;
   }
-
 }

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Lora:wght@700&display=swap');
 
 * {
   margin: 0;
@@ -78,4 +79,63 @@ a.anchor {
   position: relative;
   top: -125px;
   visibility: hidden;
+}
+
+/* GLOBAL BUTTON STYLES */
+.button {
+  border-radius: 6px;
+  padding: 15px 30px;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* Primary */
+.button--primary {
+  @extend .button;
+  background-color: rgba(239, 161, 105, 0.78);
+  border: 1px solid rgba(239, 161, 105, 0.78);
+  color: #111d33;
+
+  &:hover {
+    opacity: 0.92;
+    transform: scale(1.2, 1.2);
+  }
+}
+
+/* Outline */
+.button--outline {
+  @extend .button;
+  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.11);
+  background-color: transparent;
+  border: 1px solid #efa169;
+  color: #efa169;
+
+  &:hover {
+    background-color: rgba(239, 161, 105, 0.1);
+  }
+}
+
+/* FULL-WIDTH OPTION */
+.button--full {
+  width: 100%;
+}
+
+/* SMALL BUTTON OPTION */
+.button--small {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.global-loading {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  opacity: 0.8;
 }

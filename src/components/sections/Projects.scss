@@ -2,7 +2,7 @@
   background-color: #ffffff0d;
   padding: 0;
   border-radius: 15px;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
   transition-timing-function: ease;
   border: 1px solid #ffffff1a;
 
@@ -25,7 +25,7 @@
     color: #ffffff;
     border-radius: 12px;
     padding: 4px 10px;
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-weight: 700;
   }
 }
@@ -51,4 +51,20 @@
 .project-card-info {
   padding: 1rem;
   margin-top: 0;
+}
+
+.project-links a {
+  color: #7ca9ff;
+  text-decoration: none;
+  font-weight: 500;
+  color: #7ca9ff;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+}
+
+.project-links a:hover {
+  color: rgba(239, 161, 105, 0.83);
+  border-bottom-color: rgba(239, 161, 105, 0.83);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }

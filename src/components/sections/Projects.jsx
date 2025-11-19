@@ -1,4 +1,5 @@
 // PAGE: src/components/sections/Projects.jsx
+import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';
 import { getProjects } from '../../api/getProjects';
 import './Projects.scss';
@@ -24,6 +25,12 @@ const TECHNOLOGY_MAP = {
   3: 'PHP',
   10: 'SEO',
   26: 'Theme Migration',
+  17: 'Vimeo API',
+  11: 'WooCommerce',
+  7: 'WordPress',
+  36: 'WP All Import',
+  24: 'WP Bakery',
+  14: 'Zapier Integration',
 };
 
 const TECHNOLOGY_LABELS_BY_SLUG = {
@@ -47,6 +54,12 @@ const TECHNOLOGY_LABELS_BY_SLUG = {
   php: 'PHP',
   seo: 'SEO',
   'theme-migration': 'Theme Migration',
+  'vimeo-api': 'Vimeo API',
+  woocommerce: 'WooCommerce',
+  wordpress: 'WordPress',
+  'wp-all-import': 'WP All Import',
+  'wp-bakery': 'WP Bakery',
+  'zapier-integration': 'Zapier Integration',
 };
 
 // Helpers to safely read across wp/v2 and acf/v3 payloads
@@ -156,7 +169,7 @@ export default function Projects() {
     return () => ac.abort();
   }, []);
 
-  if (loading) return <div>Loading…</div>;
+  if (loading) return null;
   if (err) return <div>Failed to load projects.</div>;
 
   return (
@@ -209,9 +222,13 @@ export default function Projects() {
 
                 {/* 4) Description */}
                 {desc && (
-                  <p className="project-desc" style={{ marginBottom: 12 }}>
-                    {desc}
-                  </p>
+                  <div
+                    className="project-desc"
+                    style={{ marginBottom: 12 }}
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(desc),
+                    }}
+                  />
                 )}
 
                 {/* 5) Link */}

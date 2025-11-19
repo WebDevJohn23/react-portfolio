@@ -1,23 +1,28 @@
 // PAGE: src/components/sections/Contact.js
 import emailjs from '@emailjs/browser';
+import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';
 import { getHomepage } from '../../api/getHomepage.js';
 import './Contact.scss';
 
 function getContactHeadline(data) {
-  return data?.contact_section?.['contact_section_headline'] ?? '';
+  const raw = data?.contact_section?.['contact_section_headline'] ?? '';
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getContactSubHeadline(data) {
-  return data?.contact_section?.['contact_section_subheadline'] ?? '';
+  const raw = data?.contact_section?.['contact_section_subheadline'] ?? '';
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getAdditionalText(data) {
-  return data?.contact_section?.['contact_section_additional_text'] ?? '';
+  const raw = data?.contact_section?.['contact_section_additional_text'] ?? '';
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getAdditionalTextUrl(data) {
-  return data?.contact_section?.['contact_section_additional_text_url'] ?? '';
+  const raw = data?.contact_section?.['contact_section_additional_text_url'] ?? '';
+  return typeof raw === 'string' ? raw : '';
 }
 
 export default function Contact() {
@@ -75,6 +80,13 @@ export default function Contact() {
   const contactSubHeadline = getContactSubHeadline(contactData);
   const additionalText = getAdditionalText(contactData);
   const additionalTextUrl = getAdditionalTextUrl(contactData);
+
+  // Validate URL
+  const safeUrl =
+    additionalTextUrl && /^[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,})/.test(additionalTextUrl)
+      ? `https://${additionalTextUrl}`
+      : null;
+
   return (
     <section className="contact-section" aria-labelledby="contact-title">
       <a className="anchor" id="contact"></a>
@@ -82,10 +94,20 @@ export default function Contact() {
       <h2 id="section-title">
         Get In <span>Touch</span>
       </h2>
-      <div className="contact-form-container">
-        <h3 className="contact-headline">{contactHeadline}</h3>
-        <span className="contact-subheadline">{contactSubHeadline}</span>
 
+      <div className="contact-form-container">
+        {/* HEADLINES */}
+        <h3
+          className="contact-headline"
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(contactHeadline) }}
+        />
+
+        <span
+          className="contact-subheadline"
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(contactSubHeadline) }}
+        />
+
+        {/* FORM */}
         <form onSubmit={handleSubmit} className="contact-form">
           <input
             className="contact-form-field"
@@ -117,19 +139,26 @@ export default function Contact() {
             required
           />
           <div>
-            <button type="submit" className="contact-form-submit contact-form-field">
+            <button type="submit" className="button button--primary button--full">
               Send Message
             </button>
           </div>
 
           {status && <p className="form-status">{status}</p>}
         </form>
+
+        {/* ADDITIONAL TEXT */}
         <div className="contact-additional">
-          <span className="contact-additional-text">{additionalText} </span>
-          <a href={`https://${additionalTextUrl}`}>
-            {' '}
-            <span className="contact-additional-textUrl">{additionalTextUrl}</span>
-          </a>
+          <span
+            className="contact-additional-text"
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(additionalText) }}
+          />
+
+          {safeUrl && (
+            <a href={safeUrl} target="_blank" rel="noopener noreferrer">
+              <span className="contact-additional-textUrl">{additionalTextUrl}</span>
+            </a>
+          )}
         </div>
       </div>
     </section>

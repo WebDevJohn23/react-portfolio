@@ -1,44 +1,53 @@
 // PAGE: src/components/sections/About.js
-import DOMPurify from 'dompurify'; // sanitize HTML
+import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';
 import { getHomepage } from '../../api/getHomepage.js';
 import './About.scss';
 
-// should really be a loop... but keeping it simple for now
+// ---- Getters (ensure string type) ----
 function getStatOneNumber(data) {
-  return data?.about_me_section?.['about_me_stat_1_-_number'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_1_-_number'];
+  return typeof raw === 'string' ? raw : String(raw ?? '');
 }
 
 function getStatTwoNumber(data) {
-  return data?.about_me_section?.['about_me_stat_2_-_number'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_2_-_number'];
+  return typeof raw === 'string' ? raw : String(raw ?? '');
 }
 
 function getStatThreeNumber(data) {
-  return data?.about_me_section?.['about_me_stat_3_-_number'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_3_-_number'];
+  return typeof raw === 'string' ? raw : String(raw ?? '');
 }
 
 function getStatFourNumber(data) {
-  return data?.about_me_section?.['about_me_stat_4_-_number'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_4_-_number'];
+  return typeof raw === 'string' ? raw : String(raw ?? '');
 }
 
 function getStatOneText(data) {
-  return data?.about_me_section?.['about_me_stat_1_-_text'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_1_-_text'];
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getStatTwoText(data) {
-  return data?.about_me_section?.['about_me_stat_2_-_text'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_2_-_text'];
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getStatThreeText(data) {
-  return data?.about_me_section?.['about_me_stat_3_-_text'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_3_-_text'];
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getStatFourText(data) {
-  return data?.about_me_section?.['about_me_stat_4_-_text'] ?? '';
+  const raw = data?.about_me_section?.['about_me_stat_4_-_text'];
+  return typeof raw === 'string' ? raw : '';
 }
 
 function getAboutMeInfo(data) {
-  return data?.about_me_section?.['about_us_info_text'] ?? '';
+  const raw = data?.about_me_section?.['about_us_info_text'];
+  return typeof raw === 'string' ? raw : '';
 }
 
 export default function About() {
@@ -46,7 +55,6 @@ export default function About() {
   const [err, setErr] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch About section fields from WordPress
   useEffect(() => {
     const ac = new AbortController();
     (async () => {
@@ -62,7 +70,7 @@ export default function About() {
     return () => ac.abort();
   }, []);
 
-  if (loading) return <div>Loading…</div>;
+  if (loading) return null;
   if (err) return <div>Failed to load about.</div>;
   if (!aboutData) return <div>No about data.</div>;
 
@@ -88,45 +96,79 @@ export default function About() {
       </h2>
 
       <div className="about-content">
+        {/* LEFT SECTION */}
         <div className="about-left">
           <div className="about-description-grid">
             <p className="about-description">
-              <span className="about-number">{statOneNumber}</span>
+              <span
+                className="about-number"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statOneNumber),
+                }}
+              />
               <span
                 className="about-text"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(statOneText) }}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statOneText),
+                }}
               />
             </p>
 
             <p className="about-description">
-              <span className="about-number">{statTwoNumber}</span>
+              <span
+                className="about-number"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statTwoNumber),
+                }}
+              />
               <span
                 className="about-text"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(statTwoText) }}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statTwoText),
+                }}
               />
             </p>
 
             <p className="about-description">
-              <span className="about-number">{statThreeNumber}</span>
+              <span
+                className="about-number"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statThreeNumber),
+                }}
+              />
               <span
                 className="about-text"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(statThreeText) }}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statThreeText),
+                }}
               />
             </p>
 
             <p className="about-description">
-              <span className="about-number">{statFourNumber}</span>
+              <span
+                className="about-number"
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statFourNumber),
+                }}
+              />
               <span
                 className="about-text"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(statFourText) }}
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(statFourText),
+                }}
               />
             </p>
           </div>
         </div>
 
+        {/* RIGHT */}
         <div className="about-right">
           <p className="about-info">
-            <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(aboutMeInfo) }} />
+            <span
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(aboutMeInfo),
+              }}
+            />
           </p>
         </div>
       </div>

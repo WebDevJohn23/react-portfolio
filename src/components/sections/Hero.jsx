@@ -54,7 +54,7 @@ export default function Hero() {
     return () => ac.abort();
   }, []);
 
-  if (loading) return <div>Loading…</div>;
+  if (loading) return null;
   if (err) return <div>Failed to load hero.</div>;
   if (!heroData) return <div>No hero data.</div>;
 
@@ -97,7 +97,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-buttons">
-            <a href={button1Url} className="hero-left-button">
+            <a href={button1Url} className="button button--primary">
               <span
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(button1Text),
@@ -105,7 +105,7 @@ export default function Hero() {
               />
             </a>
 
-            <a href={button2Url} className="hero-right-button hero-button--shake">
+            <a href={button2Url} className="button button--outline hero-button--shake">
               <span
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(button2Text),
