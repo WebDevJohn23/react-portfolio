@@ -3,6 +3,7 @@ import './Footer.scss';
 import { useEffect } from 'react';
 
 const updatedAt =
+  // eslint-disable-next-line no-undef
   typeof __BUILD_DATE__ !== 'undefined' ? new Date(__BUILD_DATE__).toLocaleDateString() : 'unknown';
 
 export default function Footer() {
